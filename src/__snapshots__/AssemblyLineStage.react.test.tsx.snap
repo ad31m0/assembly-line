@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AssemblyLine /> with no props should match the snapshot 1`] = `"<div class=\\"assembly-line-stage\\" style=\\"width:200px\\"><h4>Idea</h4><div><button>1</button></div></div>"`;
+exports[`<AssemblyLineStage> should match the snapshot 1`] = `"<div class=\\"assembly-line-stage\\" style=\\"width:200px\\"><h4>Idea</h4><div><button class=\\"animate__animated animate__fadeIn\\">1</button></div></div>"`;

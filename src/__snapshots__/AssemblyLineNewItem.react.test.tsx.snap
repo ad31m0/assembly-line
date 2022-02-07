@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AssemblyLine /> with no props should match the snapshot 1`] = `"<div><span>Add an item: </span><input maxLength=\\"160\\" value=\\"\\"/></div>"`;
+exports[`<AssemblyLineNewItem /> should match the snapshot 1`] = `"<div><span>Add an item: </span><input maxLength=\\"160\\" value=\\"\\"/></div>"`;

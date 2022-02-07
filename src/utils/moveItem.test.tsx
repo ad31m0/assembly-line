@@ -4,7 +4,7 @@ describe('moveItem', () => {
   const stages = ["1", "2"];
   const emptya: Array<Array<string>> = stages.map((name: string, idx: number) => []);
   const setStagesItems = (stagesItems: string[][]) => {}
-  it('moveItem between stages', () => {
+  it('move item between stages', () => {
     const setStagesItemsMock = jest.fn() as jest.MockedFunction<typeof setStagesItems>;
     const moveItemMock = moveItemCtor({ stagesItems: emptya, setStagesItems: setStagesItemsMock });
 

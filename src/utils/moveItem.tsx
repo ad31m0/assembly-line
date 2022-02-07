@@ -1,36 +1,35 @@
+import { push, remove, unshift } from "./arrayHelpers";
 
 export type moveItemType = (itemIdx: number, stageIdx: number, delta: number, itemName?: string) => void;
-/* istanbul ignore next */
-export const push = (stage: string[], item: string) => {
-    stage.push(item);
-    return stage;
-}
-/* istanbul ignore next */
-export const unshift = (stage: string[], item: string) => {
-    stage.unshift(item);
-    return stage;
-}
 
-export const remove = (stage: string[], itemIdx: number) => {
-    stage.splice(itemIdx, 1);
-    return stage;
-}
+/**
+ * Constructor for the moveItem function
+ * shares read/edit access from an arbitrary context for testing convenience
+ *   
+ * @param stagesItems: string[][] 
+ * @param setStagesItems: (items: string[][]) => void 
+ * 
+ * @returns (itemIdx: number, stageIdx: number, delta: number, itemName?: string) => void
 
-export const moveItemCtor = ({ stagesItems, setStagesItems }: { stagesItems: Array<string[]>, setStagesItems: (items: Array<string[]>) => void }) => {
+ */
+export const moveItemCtor = ({ stagesItems, setStagesItems }: { stagesItems: string[][], setStagesItems: (items: string[][]) => void }) => {
     const moveItem: moveItemType = (itemIdx, stageIdx, delta, itemName) => {
-        
+        // if valid stageIdx
         if (stageIdx > -1 && stageIdx < stagesItems.length) {
+            // retrieve item name and remove from current stage
             itemName = stagesItems[stageIdx][itemIdx];
             stagesItems[stageIdx] = remove(stagesItems[stageIdx], itemIdx);
         }
-        if ((stageIdx === 0 && delta < 0) || (stageIdx === stagesItems.length - 1 && delta > 0)) {
-            // remove from pipeline don't add to another stage
-        } else {
+        // if not left clicked at the [first] stage and not right clicked at the [last] stage
+        if (!(stageIdx === 0 && delta < 0) && !(stageIdx === stagesItems.length - 1 && delta > 0)) {
+            // get the destination stage based on the given delta (+1 || -1)
             const stage = stagesItems[stageIdx + delta];
             if (delta > 0) {
-                stagesItems[stageIdx + delta] = push(stage, itemName as string);
-            } else {
+                // prepend if moving forward
                 stagesItems[stageIdx + delta] = unshift(stage, itemName as string);
+            } else {
+                // append if moving backwards
+                stagesItems[stageIdx + delta] = push(stage, itemName as string);
             }
         }
         setStagesItems([...stagesItems]);
