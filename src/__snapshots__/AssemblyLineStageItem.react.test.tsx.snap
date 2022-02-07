@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AssemblyLine /> with no props should match the snapshot 1`] = `"<div><button>item1</button></div>"`;
